@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+var FakeSMTP = require('../').FakeSMTP;
+var smtp = new FakeSMTP();
+
+smtp.start();
