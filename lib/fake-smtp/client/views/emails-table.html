@@ -1,0 +1,19 @@
+<table class="table table-hover table-condensed" ng-controller="EmailTableCtrl">
+  <thead>
+    <tr>
+      <th><a ng-click="order('subject')" href="#/">Subject {{ predicate === 'subject' ? (reverse ? '&#x25BC;' : '&#x25B2;') : '' }}</a></th>
+      <th><a ng-click="order('from[0]')" href="#/">From {{ predicate === 'from[0]' ? (reverse ? '&#x25BC;' : '&#x25B2;') : '' }}</a></th>
+      <th><a ng-click="order('to[0]')" href="#/">Recipients {{ predicate === 'to[0]' ? (reverse ? '&#x25BC;' : '&#x25B2;') : '' }}</a></th>
+      <th><a ng-click="order('date')" href="#/">Date {{ predicate === 'date' ? (reverse ? '&#x25BC;' : '&#x25B2;') : '' }}</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="email in emails | orderBy:predicate:reverse track by email.uuid">
+      <td>{{ email.subject }}</td>
+      <td>{{ email.from.join(', ') }}</td>
+      <td>{{ email.to.join(', ') }}</td>
+      <td>{{ email.date|date:'dd/mm/yyyy hh:mm' }}</td>
+      <td><a class="btn btn-primary btn-xs" ng-href="#/email/{{email.uuid}}">Open</a></td>
+    </tr>
+  </tbody>
+</table>
