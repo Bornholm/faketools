@@ -1,1 +1,4 @@
-smtp/*.eml
+smtp/**
+!smtp/.gitkeep
+ldap/**
+!ldap/.gitkeep
