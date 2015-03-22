@@ -26,9 +26,18 @@
     </div>
     <div class="col-md-8">
       <h3>Content</h3>
-      <pre>
-        {{email.text}}
-      </pre>
+      <div class="row">
+        <div class="col-md-6" style="display: table-cell">
+          <h4>HTML</h4>
+          <iframe frameborder="0" srcdoc="{{ email.html | toTrusted }}"></iframe>
+        </div>
+        <div class="col-md-6" style="display: table-cell">
+          <h4>Text</h4>
+          <pre>
+            {{email.text}}
+          </pre>
+        </div>
+      </div>
     </div>
   </div>
 </div>
