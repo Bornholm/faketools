@@ -1,3 +1,3 @@
 # FakeTools
 
-Collection of little tools i use in my projects
+Collection of tools i use as placeholders in my development projects
