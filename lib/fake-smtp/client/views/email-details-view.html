@@ -4,40 +4,66 @@
       <a class="btn btn-primary btn-xs" href="#/">&#x25C4;  Retour</a>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h3>Headers</h3>
-      <div class="table-responsive">
-        <table class="table table-condensed small">
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="(k, v) in email.headers">
-              <td>{{ k }}</td>
-              <td>{{ v }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <h3>Content</h3>
-      <div class="row">
-        <div class="col-md-6" style="display: table-cell">
-          <h4>HTML</h4>
-          <iframe frameborder="0" srcdoc="{{ email.html | toTrusted }}"></iframe>
+  <div class="row" style="margin-top: 10px">
+
+    <div class="col-md-12">
+
+      <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="emailTab">
+          <li role="presentation" ng-class="{active: currentTab === 'html'}"><a href ng-click="currentTab = 'html'" role="tab" data-toggle="tab">HTML</a></li>
+          <li role="presentation" ng-class="{active: currentTab === 'text'}"><a href ng-click="currentTab = 'text'" aria-controls="text" role="tab" data-toggle="tab">Text</a></li>
+          <li role="presentation" ng-class="{active: currentTab === 'headers'}"><a href ng-click="currentTab = 'headers'" aria-controls="headers" role="tab" data-toggle="tab">Headers</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+          <div role="tabpanel" class="tab-pane" ng-class="{active: currentTab === 'html'}" id="html">
+            <script type="text/javascript">
+              function resizeFrame() {
+                this.style.height = this.contentWindow.document.body.scrollHeight + 'px';
+              }
+            </script>
+            <iframe frameborder="0" style="width: 100%;"
+              srcdoc="{{ email.html | toTrusted }}"
+              onload='javascript:resizeFrame.call(this);'>
+            </iframe>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" ng-class="{active: currentTab === 'text'}">
+            <pre>
+              {{email.text}}
+            </pre>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" ng-class="{active: currentTab === 'headers'}">
+            <div class="table-responsive">
+              <table class="table table-condensed small">
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="(k, v) in email.headers">
+                    <td>{{ k }}</td>
+                    <td>{{ v }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
-        <div class="col-md-6" style="display: table-cell">
-          <h4>Text</h4>
-          <pre>
-            {{email.text}}
-          </pre>
-        </div>
       </div>
+
     </div>
+    <script type="text/javascript">
+      $('#emailTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+    </script>
   </div>
 </div>

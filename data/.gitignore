@@ -2,3 +2,5 @@ smtp/**
 !smtp/.gitkeep
 ldap/**
 !ldap/.gitkeep
+cas/**
+!cas/.gitkeep
