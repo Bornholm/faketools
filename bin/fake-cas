@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+var FakeCAS = require('../').FakeCAS;
+
+new FakeCAS.Server().start();
+//new FakeLDAP.WebApp().start();

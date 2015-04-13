@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>FakeCAS - Connect</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body ng-app="FakeSMTP">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="panel panel-default" style="margin-top: 50px;" >
+            <div class="panel-heading">
+              <h3 class="panel-title">FakeCAS - Authentication</h3>
+            </div>
+            <div class="panel-body">
+              <form class="form" method="POST">
+                <div class="form-group">
+                  <label for="loginInput">Login</label>
+                  <input type="text" name="login" class="form-control" id="loginInput">
+                </div>
+                <div class="form-group">
+                  <label for="passwordInput">Password</label>
+                  <input type="password" name="password" class="form-control" id="passwordInput">
+                </div>
+                <input class="btn btn-primary pull-right" type="submit" value="Connect" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
