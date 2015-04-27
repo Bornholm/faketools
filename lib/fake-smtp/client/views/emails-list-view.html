@@ -20,11 +20,20 @@
             <td>{{ email.subject }}</td>
             <td>{{ email.from.join(', ') }}</td>
             <td>{{ email.to.join(', ') }}</td>
-            <td>{{ email.date|date:'dd/mm/yyyy hh:mm' }}</td>
+            <td>{{ email.date|date:'dd/MM/yyyy H:mm' }}</td>
             <td><a class="btn btn-primary btn-xs" ng-href="#/email/{{email.uuid}}">Open</a></td>
           </tr>
-          <tr ng-show="emails.length === 0">
+          <tr ng-show="emails.length === 0 && !loading">
             <td colspan="5" style="text-align:center;padding: 10px">No emails yet</td>
+          </tr>
+          <tr ng-show="loading">
+            <td colspan="5" style="text-align:center;padding: 10px">
+              <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
