@@ -6,14 +6,13 @@
   </div>
   <div class="row" style="margin-top: 10px">
 
-    <div class="col-md-12">
+    <div ng-class="{ 'col-md-10': email.attachments, 'col-md-12': !email.attachments }">
 
       <div role="tabpanel">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="emailTab">
           <li role="presentation" ng-class="{active: currentTab === 'html'}"><a href ng-click="currentTab = 'html'" role="tab" data-toggle="tab">HTML</a></li>
-          <li role="presentation" ng-class="{active: currentTab === 'text'}"><a href ng-click="currentTab = 'text'" aria-controls="text" role="tab" data-toggle="tab">Text</a></li>
-          <li role="presentation" ng-class="{active: currentTab === 'headers'}"><a href ng-click="currentTab = 'headers'" aria-controls="headers" role="tab" data-toggle="tab">Headers</a></li>
+          <li role="presentation" ng-class="{active: currentTab === 'text'}"><a href ng-click="currentTab = 'text'" aria-controls="text" role="tab" data-toggle="tab">Text</a></li>          <li role="presentation" ng-class="{active: currentTab === 'headers'}"><a href ng-click="currentTab = 'headers'" aria-controls="headers" role="tab" data-toggle="tab">Headers</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -36,9 +35,7 @@
           </div>
 
           <div role="tabpanel" class="tab-pane" ng-class="{active: currentTab === 'text'}">
-            <pre>
-              {{email.text}}
-            </pre>
+            <pre>{{email.text}}</pre>
           </div>
 
           <div role="tabpanel" class="tab-pane" ng-class="{active: currentTab === 'headers'}">
@@ -64,6 +61,16 @@
       </div>
 
     </div>
+
+    <div ng-if="email.attachments" class="col-md-2">
+      <b>Pièces jointes</b>
+      <ul>
+        <li ng-repeat="a in email.attachments">
+          <a download="{{a.fileName}}" ng-href="/api/emails/{{email.uuid}}/{{$index}}">{{ a.fileName }}</a>
+        </li>
+      </ul>
+    </div>
+
     <script type="text/javascript">
       $('#emailTab a').click(function (e) {
         e.preventDefault()
