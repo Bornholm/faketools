@@ -12,6 +12,7 @@
               <h3 class="panel-title">FakeCAS - Authentication</h3>
             </div>
             <div class="panel-body">
+              <div class="alert alert-danger" id="alert" style="display:none;"></div>
               <form class="form" method="POST">
                 <div class="form-group">
                   <label for="loginInput">Login</label>
@@ -28,5 +29,15 @@
         </div>
       </div>
     </div>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script>
+      $(function() {
+        function getParameterByName(name) {
+         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+        }
+        var err = getParameterByName('err');
+        if(err) $('#alert').text(err).show();
+      });
+    </script>
   </body>
 </html>
