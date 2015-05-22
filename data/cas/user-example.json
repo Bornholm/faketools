@@ -1,0 +1,7 @@
+{
+  "password": "my user password in cleartext",
+  "attributes": {
+    "user attribute A": "associated value",
+    "foo": "bar"
+  }
+}
