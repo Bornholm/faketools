@@ -25,21 +25,20 @@ RUN git config --global http.proxy $HTTP_PROXY
 RUN git config --global https.proxy $HTTP_PROXY
 RUN cd /opt && git clone http://github.com/Bornholm/faketools.git faketools
 WORKDIR /opt/faketools
-RUN git checkout feature/docker
 RUN npm install --production
 
-RUN mkdir -p /etc/services/fake-smtp
-ADD services/fake-smtp.sh /etc/services/fake-smtp/run
-RUN chmod +x /etc/services/fake-smtp/run
+RUN mkdir -p /etc/service/fake-smtp
+ADD ./service/fake-smtp.sh /etc/service/fake-smtp/run
+RUN chmod +x /etc/service/fake-smtp/run
 
-RUN mkdir -p /etc/services/fake-ldap
-ADD services/fake-ldap.sh /etc/services/fake-ldap/run
-RUN chmod +x /etc/services/fake-ldap/run
+RUN mkdir -p /etc/service/fake-ldap
+ADD ./service/fake-ldap.sh /etc/service/fake-ldap/run
+RUN chmod +x /etc/service/fake-ldap/run
 
-RUN mkdir -p /etc/services/fake-cas
-ADD services/fake-cas.sh /etc/services/fake-cas/run
-RUN chmod +x /etc/services/fake-cas/run
+RUN mkdir -p /etc/service/fake-cas
+ADD ./service/fake-cas.sh /etc/service/fake-cas/run
+RUN chmod +x /etc/service/fake-cas/run
 
-RUN apt-get purge build-essential python2.7 && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get --yes purge build-essential python2.7 && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV DEBIAN_FRONTEND newt
