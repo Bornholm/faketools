@@ -1,0 +1,10 @@
+faketools:
+  build: ./containers/faketools
+  ports:
+    - "8080:8080"
+    - "8081:8081"
+    - "2525:2525"
+    - "3389:3389"
+    - "8443:8443"
+  volumes:
+    - ".:/faketools"
