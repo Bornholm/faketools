@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd /opt/faketools
-./bin/fake-cas
+cd /faketools
+./bin/fake-cas | sed 's/\(.*\)/[CAS] \1/'

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd /opt/faketools
-./bin/fake-ldap
+cd /faketools
+./bin/fake-ldap | sed 's/\(.*\)/[LDAP] \1/'

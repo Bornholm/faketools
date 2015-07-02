@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd /opt/faketools
-./bin/fake-smtp
+cd /faketools
+./bin/fake-smtp | sed 's/\(.*\)/[SMTP] \1/'
