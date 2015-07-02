@@ -1,0 +1,6 @@
+faketools:
+  build: ./containers/faketools
+  ports:
+    - "8080:8080"
+    - "8081:8081"
+    - "2525:2525"
