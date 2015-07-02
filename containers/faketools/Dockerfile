@@ -25,6 +25,7 @@ RUN git config --global http.proxy $HTTP_PROXY
 RUN git config --global https.proxy $HTTP_PROXY
 RUN cd /opt && git clone http://github.com/Bornholm/faketools.git faketools
 WORKDIR /opt/faketools
+RUN git checkout feature/docker
 RUN npm install --production
 
 RUN mkdir -p /etc/services/fake-smtp
