@@ -34,6 +34,10 @@ RUN mkdir -p /etc/service/fake-cas
 ADD ./service/fake-cas.sh /etc/service/fake-cas/run
 RUN chmod +x /etc/service/fake-cas/run
 
+RUN mkdir -p /etc/my_init.d
+ADD init/install-deps.sh /etc/my_init.d/install-deps.sh
+RUN chmod +x /etc/my_init.d/install-deps.sh
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV DEBIAN_FRONTEND newt
