@@ -20,7 +20,7 @@
           <div role="tabpanel" class="tab-pane" ng-class="{active: currentTab === 'html'}" id="html">
             <script type="text/javascript">
               function resizeFrame() {
-                this.style.height = this.contentWindow.document.body.scrollHeight + 'px';
+                this.style.height = document.body.scrollHeight + 'px';
               }
               function openLinksInNewTab() {
                 var base = document.createElement('base');
