@@ -1,4 +1,5 @@
-node_modules
-.git
-docker-compose.yml
-data
+/node_modules
+/containers
+/.git
+/docker-compose.yml
+/data

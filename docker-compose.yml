@@ -15,5 +15,11 @@ services:
       - "2525:2525"
       - "3389:3389"
       - "8443:8443"
+      - "2222:22"
     volumes:
       - ./data:/faketools/data
+    environment:
+      HTTP_PROXY: ${HTTP_PROXY}
+      HTTPS_PROXY: ${HTTPS_PROXY}
+      http_proxy: ${http_proxy}
+      https_proxy: ${https_proxy}

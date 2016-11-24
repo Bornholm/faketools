@@ -2,5 +2,5 @@
 
 var FakeLDAP = require('../').FakeLDAP;
 
-new FakeLDAP.Server().start();
-new FakeLDAP.WebApp().start();
+new FakeLDAP.Server().start(function(err) { if(err) console.error(err); });
+new FakeLDAP.WebApp().start(function(err) { if(err) console.error(err); });

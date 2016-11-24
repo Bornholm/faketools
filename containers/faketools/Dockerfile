@@ -5,12 +5,10 @@ ARG HTTPS_PROXY=
 ARG http_proxy=
 ARG https_proxy=
 
-RUN apk --no-cache add supervisor nodejs build-base
+RUN apk --no-cache add supervisor nodejs build-base openssh
 
 ADD containers/faketools/supervisor.ini /etc/supervisor.d/supervisor.ini
 
-ADD data/cas/fakecas-cert.pem /faketools/certs/fakecas-cert.pem
-ADD data/cas/fakecas-key.pem /faketools/certs/fakecas-key.pem
 ADD containers/faketools/faketoolsrc.json /faketools/.faketoolsrc
 
 ADD . /faketools
@@ -18,6 +16,18 @@ ADD . /faketools
 WORKDIR /faketools
 
 RUN npm install bower -g && npm install
+
+COPY ./data/cas/fakecas-cert.pem /faketools/certs/fakecas-cert.pem
+COPY ./data/cas/fakecas-key.pem /faketools/certs/fakecas-key.pem
+
+RUN sed -i 's/^#PermitRootLogin.*$/PermitRootLogin yes/' /etc/ssh/sshd_config \
+  && sed -i 's/^#PasswordAuthentication.*$/PasswordAuthentication yes/' /etc/ssh/sshd_config \
+  && sed -i 's/^#PermitRootLogin.*$/PermitRootLogin yes/' /etc/ssh/sshd_config \
+  && sed -i "s/^#HostKey.*$/HostKey \/etc\/ssh\/ssh_host_rsa_key/" /etc/ssh/sshd_config
+
+RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+
+RUN echo "root:root" | chpasswd
 
 VOLUME ["/faketools/data"]
 

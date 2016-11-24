@@ -2,5 +2,5 @@
 
 var FakeSMTP = require('../').FakeSMTP;
 
-new FakeSMTP.Server().start();
-new FakeSMTP.WebApp().start();
+new FakeSMTP.Server().start(function(err) { if(err) console.error(err); });
+new FakeSMTP.WebApp().start(function(err) { if(err) console.error(err); });

@@ -2,8 +2,8 @@
   "fakeCAS": {
     "cas": {
       "httpsOpts": {
-        "keyPath": "certs/fakecas-key.pem",
-        "certPath": "certs/fakecas-cert.pem"
+        "keyPath": "/faketools/certs/fakecas-key.pem",
+        "certPath": "/faketools/certs/fakecas-cert.pem"
       }
     }
   }

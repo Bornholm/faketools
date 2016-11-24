@@ -2,5 +2,5 @@
 
 var FakeCAS = require('../').FakeCAS;
 
-new FakeCAS.Server().start();
-//new FakeLDAP.WebApp().start();
+new FakeCAS.Server().start(function(err) { if(err) console.error(err); });
+// new FakeCAS.WebApp().start(function(err) { if(err) console.error(err); });
