@@ -2,9 +2,27 @@
 
 Collection de micro outils utilisés comme remplacements temporaires dans le cadre de mes développements Web.
 
-## Démarrer avec les sources
+## Avec docker-compose
+
+### Premier lancement
 
 ```
+git clone https://github.com/Bornholm/faketools.git
+cd faketools
+docker-compose up
+```
+
+### Forcer la reconstruction de l'image Docker
+
+```bash
+cd faketools
+docker-compose rm -v
+docker-compose build --no-cache
+```
+
+## Démarrer avec les sources
+
+```bash
 git clone https://github.com/Bornholm/faketools.git
 cd faketools
 npm install
