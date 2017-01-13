@@ -1,7 +1,15 @@
 <div class="email-details" ng-controller="EmailDetailsCtrl">
   <div class="row">
-    <div class="col-md-12">
-      <a class="btn btn-primary btn-xs" href="#/">&#x25C4;  Retour</a>
+    <div class="col-md-6">
+      <a class="btn btn-primary" href="#/">&#x25C4;  Retour</a>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="transferDest" placeholder="john.doe@mailprovider.com, mona.lisa@otherprovider.com...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-click="onTransferClick()">Transfer</button>
+        </span>
+      </div>
     </div>
   </div>
   <div class="row" style="margin-top: 10px">
@@ -12,7 +20,8 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="emailTab">
           <li role="presentation" ng-class="{active: currentTab === 'html'}"><a href ng-click="currentTab = 'html'" role="tab" data-toggle="tab">HTML</a></li>
-          <li role="presentation" ng-class="{active: currentTab === 'text'}"><a href ng-click="currentTab = 'text'" aria-controls="text" role="tab" data-toggle="tab">Text</a></li>          <li role="presentation" ng-class="{active: currentTab === 'headers'}"><a href ng-click="currentTab = 'headers'" aria-controls="headers" role="tab" data-toggle="tab">Headers</a></li>
+          <li role="presentation" ng-class="{active: currentTab === 'text'}"><a href ng-click="currentTab = 'text'" aria-controls="text" role="tab" data-toggle="tab">Text</a></li>
+          <li role="presentation" ng-class="{active: currentTab === 'headers'}"><a href ng-click="currentTab = 'headers'" aria-controls="headers" role="tab" data-toggle="tab">Headers</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">

@@ -45,6 +45,25 @@ Serveur simulant le fonctionnement d'un relais SMTP avec interface web/api REST 
 - N'importe quel couple identifiant/mot de passe sera accepté par le serveur SMTP.
 - Les courriels sont sauvegardés dans `./data/smtp`
 
+### Configurer le transfert de message
+
+Dans votre fichier `.faketoolsrc` (exemple avec Gmail):
+```json
+{
+  "fakeSMTP": {
+    "transferConfig": {
+      "host": "smtp.gmail.com",
+      "port": 465,
+      "secure": true, // use SSL
+      "auth": {
+        "user": "<user>",
+        "pass": "<password>"
+      }
+    }
+  }
+}
+```
+
 ## FakeLDAP
 
 Serveur simulant un annuaire LDAP, sans schéma et stockant les données dans le système de fichier local.

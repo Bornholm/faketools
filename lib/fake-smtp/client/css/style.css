@@ -42,3 +42,7 @@
     -webkit-transform: scale(1.0);
   }
 }
+
+.space-top {
+  margin-top: 20px;
+}
