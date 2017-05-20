@@ -1,3 +1,4 @@
 node_modules
 *~
 .faketoolsrc
+docker-compose.yml
