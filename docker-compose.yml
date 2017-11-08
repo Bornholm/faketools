@@ -10,12 +10,12 @@ services:
         http_proxy: ${http_proxy}
         https_proxy: ${https_proxy}
     ports:
-      - "8080:8080"
-      - "8081:8081"
-      - "2525:2525"
-      - "3389:3389"
-      - "8443:8443"
-      - "2222:22"
+      - "${SMTP_APP_PORT}:8080"
+      - "${LDAP_APP_PORT}:8081"
+      - "${SMTP_PORT}:2525"
+      - "${LDAP_PORT}:3389"
+      - "${CAS_PORT}:8443"
+      - "${SFTP_PORT}:22"
     volumes:
       - ./data:/faketools/data
     environment:
