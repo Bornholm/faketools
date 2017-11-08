@@ -9,6 +9,7 @@ Collection de micro outils utilisés comme remplacements temporaires dans le cad
 ```
 git clone https://github.com/Bornholm/faketools.git
 cd faketools
+cp .env.dist .env
 docker-compose up
 ```
 
