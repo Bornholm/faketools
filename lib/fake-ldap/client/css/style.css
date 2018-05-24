@@ -35,3 +35,8 @@
 #ldap-tree li.branch > input:checked + ol  {
   display: block;
 }
+
+#node-data {
+  position: sticky;
+  top: 10px;
+}
