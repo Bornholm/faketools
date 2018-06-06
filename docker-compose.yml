@@ -18,6 +18,10 @@ services:
       - "2222:22"
     volumes:
       - ./data:/faketools/data
+      - ./containers/faketools/supervisor.ini:/etc/supervisor.d/supervisor.ini
+      - ./containers/faketools/faketoolsrc.json:/faketools/.faketoolsrc
+      - ./data/cas/fakecas-cert.pem:/faketools/certs/fakecas-cert.pem
+      - ./data/cas/fakecas-key.pem:/faketools/certs/fakecas-key.pem
     environment:
       HTTP_PROXY: ${HTTP_PROXY}
       HTTPS_PROXY: ${HTTPS_PROXY}

@@ -7,18 +7,11 @@ ARG https_proxy=
 
 RUN apk --no-cache add supervisor nodejs build-base openssh
 
-ADD containers/faketools/supervisor.ini /etc/supervisor.d/supervisor.ini
-
-ADD containers/faketools/faketoolsrc.json /faketools/.faketoolsrc
-
 ADD . /faketools
 
 WORKDIR /faketools
 
 RUN npm install bower -g && npm install
-
-COPY ./data/cas/fakecas-cert.pem /faketools/certs/fakecas-cert.pem
-COPY ./data/cas/fakecas-key.pem /faketools/certs/fakecas-key.pem
 
 RUN sed -i 's/^#PermitRootLogin.*$/PermitRootLogin yes/' /etc/ssh/sshd_config \
   && sed -i 's/^#PasswordAuthentication.*$/PasswordAuthentication yes/' /etc/ssh/sshd_config \
