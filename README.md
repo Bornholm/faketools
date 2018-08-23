@@ -2,6 +2,26 @@
 
 Collection de micro outils utilisés comme remplacements temporaires dans le cadre de mes développements Web.
 
+## Avec Docker
+
+### Fake-SMTP
+
+```bash
+docker run -it --rm -p 8080:8080 -p 2525:2525 run bornholm/fake-smtp
+```
+
+### Fake-LDAP
+
+```bash
+docker run -it --rm -p 8080:8080 -p 3389:3389 run bornholm/fake-ldap
+```
+
+### Fake-CAS
+
+```bash
+docker run -it --rm -p 8443:8443 run bornholm/fake-cas
+```
+
 ## Avec docker-compose
 
 ### Premier lancement

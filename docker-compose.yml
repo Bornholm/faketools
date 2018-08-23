@@ -1,9 +1,9 @@
 version: '2'
 services:
-  faketools:
+  fake-smtp:
     build:
       context: .
-      dockerfile: containers/faketools/Dockerfile
+      dockerfile: containers/fake-smtp/Dockerfile
       args:
         HTTP_PROXY: ${HTTP_PROXY}
         HTTPS_PROXY: ${HTTPS_PROXY}
@@ -11,15 +11,56 @@ services:
         https_proxy: ${https_proxy}
     ports:
       - "8080:8080"
-      - "8081:8081"
       - "2525:2525"
-      - "3389:3389"
-      - "8443:8443"
-      - "2222:22"
     volumes:
-      - ./data:/faketools/data
-    environment:
-      HTTP_PROXY: ${HTTP_PROXY}
-      HTTPS_PROXY: ${HTTPS_PROXY}
-      http_proxy: ${http_proxy}
-      https_proxy: ${https_proxy}
+      - ./data/smtp:/fake-smtp/data/smtp
+  fake-ldap:
+    build:
+      context: .
+      dockerfile: containers/fake-ldap/Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY}
+        HTTPS_PROXY: ${HTTPS_PROXY}
+        http_proxy: ${http_proxy}
+        https_proxy: ${https_proxy}
+    ports:
+      - "8081:8081"
+      - "3389:3389"
+    volumes:
+      - ./data/ldap:/fake-ldap/data/ldap
+  fake-cas:
+    build:
+      context: .
+      dockerfile: containers/fake-cas/Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY}
+        HTTPS_PROXY: ${HTTPS_PROXY}
+        http_proxy: ${http_proxy}
+        https_proxy: ${https_proxy}
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./data/cas:/fake-cas/data/cas
+  # faketools:
+  #   build:
+  #     context: .
+  #     dockerfile: containers/faketools/Dockerfile
+  #     args:
+  #       HTTP_PROXY: ${HTTP_PROXY}
+  #       HTTPS_PROXY: ${HTTPS_PROXY}
+  #       http_proxy: ${http_proxy}
+  #       https_proxy: ${https_proxy}
+  #   ports:
+  #     - "8080:8080"
+  #     - "8081:8081"
+  #     - "2525:2525"
+  #     - "3389:3389"
+  #     - "8443:8443"
+  #     - "2222:22"
+  #   volumes:
+  #     - ./data:/faketools/data
+  #   environment:
+  #     HTTP_PROXY: ${HTTP_PROXY}
+  #     HTTPS_PROXY: ${HTTPS_PROXY}
+  #     http_proxy: ${http_proxy}
+  #     https_proxy: ${https_proxy}
