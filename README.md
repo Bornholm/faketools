@@ -7,19 +7,19 @@ Collection de micro outils utilisés comme remplacements temporaires dans le cad
 ### Fake-SMTP
 
 ```bash
-docker run -it --rm -p 8080:8080 -p 2525:2525 run bornholm/fake-smtp
+docker run -it --rm -p 8080:8080 -p 2525:2525 bornholm/fake-smtp
 ```
 
 ### Fake-LDAP
 
 ```bash
-docker run -it --rm -p 8080:8080 -p 3389:3389 run bornholm/fake-ldap
+docker run -it --rm -p 8081:8081 -p 3389:3389 bornholm/fake-ldap
 ```
 
 ### Fake-CAS
 
 ```bash
-docker run -it --rm -p 8443:8443 run bornholm/fake-cas
+docker run -it --rm -p 8443:8443 bornholm/fake-cas
 ```
 
 ## Avec docker-compose
