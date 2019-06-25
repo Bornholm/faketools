@@ -31,15 +31,10 @@
               function resizeFrame() {
                 this.style.height = document.body.scrollHeight + 'px';
               }
-              function openLinksInNewTab() {
-                var base = document.createElement('base');
-                base.target = '_blank';
-                this.contentWindow.document.head.appendChild(base)
-              }
             </script>
-            <iframe frameborder="0" style="width: 100%;"
-              srcdoc="{{ email.html | toTrusted }}"
-              onload='javascript:resizeFrame.call(this);openLinksInNewTab.call(this)'>
+            <iframe ng-if="!!htmlDataUrl" frameborder="0" style="width: 100%;"
+              src="{{ htmlDataUrl | toTrustedURL }}" sandbox
+              onload="javascript:resizeFrame.call(this);">
             </iframe>
           </div>
 
