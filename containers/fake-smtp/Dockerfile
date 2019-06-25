@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.10
 
 ARG HTTP_PROXY=
 ARG HTTPS_PROXY=
@@ -6,14 +6,14 @@ ARG http_proxy=
 ARG https_proxy=
 ARG FAKE_MODULE=smtp
 
-RUN apk add --no-cache nodejs build-base python
+RUN apk add --no-cache nodejs build-base python npm
 
 COPY . /fake-$FAKE_MODULE
 WORKDIR /fake-$FAKE_MODULE
 
 RUN npm install
 
-FROM alpine:3.7
+FROM alpine:3.10
 
 ARG FAKE_MODULE=smtp
 
@@ -34,4 +34,3 @@ VOLUME /fake-$FAKE_MODULE/data/$FAKE_MODULE
 
 ENV FAKE_MODULE=$FAKE_MODULE
 CMD bin/fake-$FAKE_MODULE
-
