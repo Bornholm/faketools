@@ -7,7 +7,7 @@ var mailOptions = {
     to: 'bar@blurdybloop.com, baz@blurdybloop.com', // list of receivers
     subject: 'Hello ✔', // Subject line
     text: 'Hello world ?', // plaintext body
-    html: '<b>Hello world ?</b>' // html body
+    html: '<b>Hello world ? Unicode: ᄀ	ᄁ	ᄂ	ᄃ	ᄄ</b><br /><a target="_blank" href="https://linuxfr.org/">Aller sur LinuxFR</a>' // html body
 };
 
 // send mail with defined transport object
